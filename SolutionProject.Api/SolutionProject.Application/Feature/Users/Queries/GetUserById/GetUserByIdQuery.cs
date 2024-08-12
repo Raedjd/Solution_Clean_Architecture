@@ -1,9 +1,10 @@
 ﻿using MediatR;
-using SolutionProject.Domain.Entities;
+using SolutionProject.Application.DataTransfertObject;
+
 
 namespace SolutionProject.Application.Feature.Users.Queries.GetUserById
 {
- public class GetUserByIdQuery : IRequest<User>
+ public class GetUserByIdQuery : IRequest<UserDto>
     {
         public Guid Id { get; set; }
     }
