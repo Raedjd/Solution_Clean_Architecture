@@ -1,11 +1,11 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SolutionProject.Application.Feature.Users.Queries;
+using SolutionProject.Application.Feature.Users.Queries.GetListUsers;
+using SolutionProject.Application.Feature.Users.Queries.GetUserById;
 
 namespace SolutionProject.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -15,11 +15,22 @@ namespace SolutionProject.Api.Controllers
         {
             _mediator = mediator;
         }
-        [HttpGet]
+        [HttpGet("/api/getUsers")]
         public async Task<IActionResult> GetUsers()
         {
             var response = await _mediator.Send(new GetUsersListQuery());
             return Ok(response);
+        }
+
+        [HttpGet("/api/getUserById")]
+        public async Task<IActionResult> GetUserById(Guid id)
+        {   
+            var request = new GetUserByIdQuery { Id = id };
+            var user = await _mediator.Send(request);
+            if (user == null) { 
+            return NotFound();
+            }
+            return Ok(user);
         }
     }
 }

@@ -2,7 +2,7 @@
 using SolutionProject.Application.Contracts.Persistence;
 using SolutionProject.Domain.Entities;
 
-namespace SolutionProject.Application.Feature.Users.Queries
+namespace SolutionProject.Application.Feature.Users.Queries.GetListUsers
 {
     public class GetUsersListQueryHandler : IRequestHandler<GetUsersListQuery, List<User>>
     {
@@ -14,7 +14,7 @@ namespace SolutionProject.Application.Feature.Users.Queries
         }
         public async Task<List<User>> Handle(GetUsersListQuery request, CancellationToken cancellationToken)
         {
-           return await _userRepository.ListAsync(cancellationToken);
+            return await _userRepository.ListAsync(cancellationToken);
         }
     }
 }
