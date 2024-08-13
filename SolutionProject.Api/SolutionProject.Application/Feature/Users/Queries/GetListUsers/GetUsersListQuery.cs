@@ -1,9 +1,8 @@
 ﻿using MediatR;
-using SolutionProject.Domain.Entities;
-
+using SolutionProject.Application.DataTransfertObject;
 namespace SolutionProject.Application.Feature.Users.Queries.GetListUsers
 {
-    public class GetUsersListQuery : IRequest<List<User>>
+    public class GetUsersListQuery : IRequest<List<UserDto>>
     {
     }
 }
