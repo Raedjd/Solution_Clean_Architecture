@@ -22,14 +22,11 @@ namespace SolutionProject.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("/api/getUserById")]
-        public async Task<IActionResult> GetUserById(Guid id)
+        [HttpGet("/api/getUserById/{id}")]
+        public async Task<IActionResult> GetUserById([FromRoute] Guid id)
         {   
             var request = new GetUserByIdQuery { Id = id };
             var user = await _mediator.Send(request);
-            if (user == null) { 
-            return NotFound();
-            }
             return Ok(user);
         }
     }
