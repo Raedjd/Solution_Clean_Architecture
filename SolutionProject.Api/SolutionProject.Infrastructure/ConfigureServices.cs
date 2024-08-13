@@ -24,6 +24,7 @@ namespace SolutionProject.Infrastructure
             });
 
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
 
             return services;
         }

@@ -1,5 +1,7 @@
 ﻿
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace SolutionProject.Application.Common.Bases
 {
     public class ResponseHandler
@@ -45,6 +47,16 @@ namespace SolutionProject.Application.Common.Bases
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Succeeded = false,
                 Message = Message == null ? "Bad Request" : Message
+            };
+        }
+        public Response<T> BadRequestValidation<T>(List<FluentValidation.Results.ValidationFailure> errors)
+        {
+            return new Response<T>()
+            {
+                StatusCode = System.Net.HttpStatusCode.BadRequest,
+                Succeeded = false,
+                //  Message = Message == null ? "Bad Request" : Message,
+                Errors = errors.Select(e => e.ErrorMessage).ToList()
             };
         }
 

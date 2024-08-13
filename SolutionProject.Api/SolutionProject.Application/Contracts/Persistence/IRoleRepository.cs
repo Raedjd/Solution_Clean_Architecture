@@ -3,8 +3,8 @@ using SolutionProject.Domain.Entities;
 
 namespace SolutionProject.Application.Contracts.Persistence
 {
-    public interface IUserRepository : IRepository<User>
+       public interface IRoleRepository :  IRepository<Role>
     {
-        Task<bool> ExistsByEmailAsync(string mail);
+        Task<bool> ExistsAsync(Guid roleId);
     }
 }
