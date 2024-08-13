@@ -20,6 +20,15 @@ namespace SolutionProject.Application.Common.Bases
                 Message = "Deleted Successfully"
             };
         }
+        public Response<T> Updated<T>(string updated)
+        {
+            return new Response<T>()
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Succeeded = true,
+                Message = updated
+            };
+        }
         public Response<T> Success<T>(T entity, object Meta = null)
         {
             return new Response<T>()

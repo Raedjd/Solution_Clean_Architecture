@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SolutionProject.Application.Feature.Users.Commands.AddUser;
+using SolutionProject.Application.Feature.Users.Commands.UpdateUser;
 using SolutionProject.Application.Feature.Users.Queries.GetListUsers;
 using SolutionProject.Application.Feature.Users.Queries.GetUserById;
 
@@ -34,6 +35,13 @@ namespace SolutionProject.Api.Controllers
 
         [HttpPost("/api/addUser")]
         public async Task<IActionResult> AddUser([FromBody] AddUserCommand command)
+        {
+            var resppnse = await _mediator.Send(command);
+            return Ok(resppnse);
+        }
+
+        [HttpPut("/api/updateUser")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             var resppnse = await _mediator.Send(command);
             return Ok(resppnse);
