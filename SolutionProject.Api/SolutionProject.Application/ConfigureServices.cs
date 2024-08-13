@@ -9,9 +9,10 @@ public static class ConfigureServices
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-
+            //Configuration of Mediator
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly( Assembly.GetExecutingAssembly()));
-            services.AddAutoMapper(typeof(UserMappingProfile));
+            //Configuration of AutoMapper
+             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
     }
