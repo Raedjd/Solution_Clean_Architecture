@@ -38,11 +38,8 @@ namespace SolutionProject.Application.Feature.Users.Commands.UpdateUser
             {
                 return BadRequestValidation<string>(validationResult.Errors);
             }
-              userExists.FirstName = request.FirstName;
-              userExists.LastName = request.LastName;
-              userExists.Email = request.Email;
-               userExists.RoleId = request.RoleId;
-             await _userRepository.UpdateAsync(userExists, cancellationToken);
+             var userUpdated = _mapper.Map<User>(request);
+             await _userRepository.UpdateAsync(userUpdated, cancellationToken);
             return Updated<string>("Updated Successfully");
         }
     }

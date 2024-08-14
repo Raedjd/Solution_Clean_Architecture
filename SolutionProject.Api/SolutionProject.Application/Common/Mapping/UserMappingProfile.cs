@@ -13,7 +13,8 @@ namespace SolutionProject.Application.Common.Mapping
 
             CreateMap<User, UserDto>();
             CreateMap<AddUserCommand, User>(); 
-            CreateMap<UpdateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
 }
