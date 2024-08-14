@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SolutionProject.Application.Feature.Users.Commands.AddUser;
+using SolutionProject.Application.Feature.Users.Commands.DeleteUser;
 using SolutionProject.Application.Feature.Users.Commands.UpdateUser;
 using SolutionProject.Application.Feature.Users.Queries.GetListUsers;
 using SolutionProject.Application.Feature.Users.Queries.GetUserById;
@@ -45,6 +46,13 @@ namespace SolutionProject.Api.Controllers
         {
             var resppnse = await _mediator.Send(command);
             return Ok(resppnse);
+        }
+        [HttpDelete("/api/deleteUser/{id}")]
+        public async Task<IActionResult> DeleteUser([FromRoute] Guid id)
+        {
+            var request = new DeleteUserCommand { Id = id };
+            var response = await _mediator.Send(request);
+            return Ok(response);
         }
     }
 }
