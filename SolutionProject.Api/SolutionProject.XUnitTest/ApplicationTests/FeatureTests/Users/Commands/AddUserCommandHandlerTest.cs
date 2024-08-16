@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using FluentValidation.TestHelper;
 using Moq;
 using SolutionProject.Application.Contracts.Persistence;
 using SolutionProject.Application.Feature.Users.Commands.AddUser;
@@ -22,5 +23,23 @@ namespace SolutionProject.XUnitTest.ApplicationTests.FeatureTests.Users.Commands
             _validator =new  AddUserCommandValidator(_mockUserRepository.Object, _mockRoleRepository.Object);
 
         }
+
+        [Fact]
+        public async Task Validator_Should_Have_Error_For_Invalid_Email()
+        {
+            // Arrange
+            var invalidEmail = "invalid-email@gmail.com"; 
+            var command = new AddUserCommand("John", "Doe", invalidEmail, "eeeeee", Guid.NewGuid());
+
+            var expectedErrorMessage = "L'adresse e-mail n'est pas valide."; 
+
+            // Act
+            var result = await _validator.TestValidateAsync(command);
+
+            // Assert
+            result.ShouldHaveValidationErrorFor(c => c.Email)
+                  .WithErrorMessage(expectedErrorMessage);
+        }
+
     }
 }

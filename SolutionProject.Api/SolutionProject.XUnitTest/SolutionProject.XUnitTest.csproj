@@ -27,8 +27,4 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ApplicationTests\FeatureTests\Users\Commands\" />
-  </ItemGroup>
-
 </Project>
