@@ -19,5 +19,14 @@ namespace SolutionProject.Application.Feature.Users.Commands.AddUser
         [NotMapped]
         public string Password { get; set; }
         public Guid RoleId { get; set; }
+
+        public AddUserCommand(string firstName, string lastName, string email, string password, Guid roleId)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            RoleId = roleId;
+        }
     }
 }
