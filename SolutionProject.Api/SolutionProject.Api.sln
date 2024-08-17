@@ -12,8 +12,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionProject.Application", "SolutionProject.Application\SolutionProject.Application.csproj", "{ED393D5C-5BD9-4618-BE7A-E98E451B4E11}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9AF97AA7-F0D7-4E49-B120-3E1466F3DF26}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionProject.XUnitTest", "SolutionProject.XUnitTest\SolutionProject.XUnitTest.csproj", "{B1986B21-8FAA-44E4-98E3-E62CD4239277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionProject.XUnitTest", "SolutionProject.XUnitTest\SolutionProject.XUnitTest.csproj", "{B1986B21-8FAA-44E4-98E3-E62CD4239277}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
