@@ -16,7 +16,6 @@ namespace SolutionProject.Application.Feature.Users.Commands.AddUser
         public string LastName { get; set; }
 
         public string Email { get; set; }
-        [NotMapped]
         public string Password { get; set; }
         public Guid RoleId { get; set; }
 

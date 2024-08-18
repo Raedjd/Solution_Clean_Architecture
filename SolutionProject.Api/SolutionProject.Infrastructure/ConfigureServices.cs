@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SolutionProject.Application.Contracts.Identity;
 using SolutionProject.Application.Contracts.Persistence;
+using SolutionProject.Infrastructure.Identity;
 using SolutionProject.Infrastructure.Persistance.Repositories;
 namespace SolutionProject.Infrastructure
 {
@@ -25,7 +27,7 @@ namespace SolutionProject.Infrastructure
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
-
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
             return services;
         }
     }
