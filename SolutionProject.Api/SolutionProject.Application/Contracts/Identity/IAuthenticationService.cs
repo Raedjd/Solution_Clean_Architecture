@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace SolutionProject.Application.Contracts.Identity
 {
-    public interface IPasswordHasher
+    public interface IAuthenticationService
     {
-        string HashPassword(string password);
-        bool VerifyPassword(User user, string hashedPassword, string providedPassword);
+        Task<User> AuthenticateAsync(string email, string password);
     }
 }

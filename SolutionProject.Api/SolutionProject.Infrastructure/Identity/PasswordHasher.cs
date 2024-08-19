@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SolutionProject.Application.Contracts.Identity;
+using SolutionProject.Domain.Entities;
 
 
 namespace SolutionProject.Infrastructure.Identity
@@ -15,6 +16,12 @@ namespace SolutionProject.Infrastructure.Identity
         public string HashPassword(string password)
         {
             return _passwordHasher.HashPassword(null!, password);
+        }
+
+        public bool VerifyPassword(User user, string hashedPassword, string providedPassword)
+        {
+            var result = _passwordHasher.VerifyHashedPassword(user, hashedPassword, providedPassword);
+            return result == PasswordVerificationResult.Success;
         }
     }
 }

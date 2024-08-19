@@ -17,5 +17,10 @@ namespace SolutionProject.Infrastructure.Persistance.Repositories
         {
             return await _dbContext.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower());
         }
+
+        public async Task<User> GetByEmailAsync(string mail)
+        {
+            return await _dbContext.Users.Include(u => u.Role).FirstOrDefaultAsync(user => user.Email.ToLower() == mail.ToLower());
+        }
     }
 }

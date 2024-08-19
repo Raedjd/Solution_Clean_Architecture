@@ -1,6 +1,8 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SolutionProject.Application.Feature.Users.Commands.AddUser;
+using SolutionProject.Application.Feature.Users.Commands.AuthentificationUser;
 using SolutionProject.Application.Feature.Users.Commands.DeleteUser;
 using SolutionProject.Application.Feature.Users.Commands.UpdateUser;
 using SolutionProject.Application.Feature.Users.Queries.GetListUsers;
@@ -10,6 +12,7 @@ namespace SolutionProject.Api.Controllers
 {
     [Route("api/user")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;

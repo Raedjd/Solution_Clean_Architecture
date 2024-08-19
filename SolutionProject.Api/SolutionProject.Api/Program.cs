@@ -10,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddInfrastructureServices(builder.Configuration).AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration).AddApplicationServices().AddServiceRegisteration(builder.Configuration);
+
 
 
 var app = builder.Build();
@@ -23,6 +24,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

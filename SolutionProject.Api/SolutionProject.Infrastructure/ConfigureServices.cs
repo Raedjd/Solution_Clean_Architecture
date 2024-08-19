@@ -5,6 +5,7 @@ using SolutionProject.Application.Contracts.Identity;
 using SolutionProject.Application.Contracts.Persistence;
 using SolutionProject.Infrastructure.Identity;
 using SolutionProject.Infrastructure.Persistance.Repositories;
+using Microsoft.Extensions.Configuration;
 namespace SolutionProject.Infrastructure
 {
     public static class ConfigureServices
@@ -28,7 +29,17 @@ namespace SolutionProject.Infrastructure
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+
+            var jwtSettingsSection = configuration.GetSection("JwtSettings");
+            services.Configure<JwtSettings>(jwtSettingsSection);
+
+
             return services;
+
         }
+
     }
 }

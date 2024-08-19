@@ -6,5 +6,6 @@ namespace SolutionProject.Application.Contracts.Persistence
     public interface IUserRepository : IRepository<User>
     {
         Task<bool> ExistsByEmailAsync(string mail);
+        Task<User> GetByEmailAsync(string mail);
     }
 }
