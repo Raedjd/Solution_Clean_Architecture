@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  sql-database-server:
+    container_name: sql-database-server
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=raed@123
+    ports:
+      - 1433:1433
+    volumes:
+      - sql-data:/var/opt/mssql  
+  clean-arch-api:
+    container_name: clean-arch-api-container
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - sql-database-server
+
+volumes:
+  sql-data:      
